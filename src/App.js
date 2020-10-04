@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import MovieList from './components/movie_list'
+import MovieList from './components/movie_list';
+import MovieDetails from './components/movie_details';
 
 class App extends Component {
   state = {
-    movies: []
+    movies: [],
+    selectedMovie: null
   }
-  movies = ['mamad', 'shamim']
 
   componentDidMount() {
     const url = 'http://127.0.0.1:8000/api/movies/';
@@ -21,11 +22,18 @@ class App extends Component {
     .catch(errors => console.log(errors));
   }
 
+  movieClicked = movie => {
+    this.setState({selectedMovie: movie})
+  }
+
   render() {  
     return (
       <div className="App">
         <h1>This is the first step</h1>
-        <MovieList movies={this.state.movies}/>
+        <div className="layout">
+          <MovieList movies={this.state.movies} movieClicked={this.movieClicked}/>
+          <MovieDetails selectedMovie={this.state.selectedMovie}/>
+        </div>
       </div>
     );
   }

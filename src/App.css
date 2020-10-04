@@ -9,3 +9,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: left;
+}
+
+.orange {
+  color: orange;
+}
